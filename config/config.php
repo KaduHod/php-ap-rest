@@ -1,0 +1,24 @@
+<?php 
+    defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
+    defined('PROJECT_PATH') ? null : define('PROJECT_PATH',"/var".DS. "www".DS."html".DS."api-rest" );
+    defined('APP_NAME') ? null : define('APP_NAME',"PHP REST API");
+    defined('MODELS_PATH') ? null : define('MODELS_PATH', PROJECT_PATH.DS."app".DS."models");
+    defined('APP_PATH') ? null : define("APP_PATH", PROJECT_PATH.DS."app");
+    defined('ROUTES_PATH') ? null : define("ROUTES_PATH", APP_PATH.DS."routes");
+    defined('ROUTER_PATH') ? null : define("ROUTER_PATH", ROUTES_PATH.DS."router.php");
+    defined('AUTOLOAD_PATH') ? null : define("AUTOLOAD_PATH", PROJECT_PATH.DS."vendor".DS."autoload.php");
+    defined('CONTROLLERS_PATH') ? null : define("CONTROLLERS_PATH", APP_PATH.DS."controllers");
+    defined('UTILS_PATH') ? null : define("UTILS_PATH", PROJECT_PATH.DS."utils");
+    defined('DB_PATH') ? null : define("DB_PATH", APP_PATH.DS."database");
+
+    require_once AUTOLOAD_PATH;
+    require_once ROUTER_PATH;
+    require_once ROUTES_PATH.DS."route.php";
+    require_once CONTROLLERS_PATH.DS."controller.php";
+    require_once CONTROLLERS_PATH.DS."taskController.php";
+    require_once MODELS_PATH.DS."model.php";
+    require_once MODELS_PATH.DS."Task.php";
+    require_once UTILS_PATH.DS."debug.php";
+    require_once UTILS_PATH.DS."string.php";
+    require_once DB_PATH.DS."db.php";
+?>

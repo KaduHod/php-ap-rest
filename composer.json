@@ -1,0 +1,9 @@
+{
+    "name": "kaduhod/api-rest",
+    "autoload": {
+        "psr-4": {
+            "Kaduhod\\ApiRest\\": "app/"
+        }
+    },
+    "require": {}
+}
