@@ -83,9 +83,8 @@ class Router {
 
     public function handleRequest($server){
         $route = $this->findRoute($server);      
-        $controller = $this->getControllerInstace($route->controller);
-        $reflectMethod = new \ReflectionMethod($route->controller, $route->method);
-        $reflectMethod->invokeArgs($controller, [$_SERVER, $route]);
+        $controller = $this->getControllerInstace($route->controller);        
+        $controller->{$route->method}($_SERVER, $route);
     }
 
     public function findRoute($server){
