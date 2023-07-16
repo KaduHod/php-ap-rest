@@ -15,13 +15,13 @@ class TaskController extends Controller {
     public function getById($server, $route) {
         $uri = $server['REQUEST_URI'];
         $pattern = $route->path;
-
-        \Utils\extractParam($uri, $pattern);
-        \Utils\dd([$route, $uri,  \Utils\extractParam($uri, $pattern)]);
+       
+	$result = \Utils\extractParam($uri, $pattern);
+	\Utils\dd(["rota" => $route,"url" =>  $uri,"result" => $result] );
     }
 
     public function index($server){
-        \Utils\dd([Model::get('tasks')]);
+        \Utils\dd([Model::get('task')]);
     }
 
     public function create($server){

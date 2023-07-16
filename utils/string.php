@@ -6,8 +6,8 @@ function getStrAfterBackSlash(string $str){
 }
 
 function addNumberRegex(string $input): string {
-    $pattern = str_replace('/:num', '\/\d+', $input);
-    return '/^' . $pattern . '$/';
+    $pattern = str_replace('/:num', '\/(\d+)', $input);
+    return '/^\/' . $pattern . '$/';
 }
 
 function makeRegexRoute(string $route) {
@@ -24,10 +24,11 @@ function match_(string $str, string $pattern) {
 }
 
 function extractParam(string $str, string $pattern) {    
-    if (preg_match($pattern, $str)) {
-        $number = substr($str, strlen('task/'));
-        return $number;  // Output: 1
-    }
-
+  	$matches = []; 
+	if (preg_match($pattern, $str,$matches)) {
+	print_r($matches);	
+        	return $matches;
+    	}
+	return preg_match($pattern, $str, $matches);
     return false;
 }

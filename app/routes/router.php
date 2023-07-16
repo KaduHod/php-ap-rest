@@ -5,12 +5,10 @@ use Routes\Route;
 
 class Router {
     public array $routes;
-    public array $controllers;
-
-    public function __construct(array $controllers)
+   
+    public function __construct()
     {
         $this->routes = [];
-        $this->controllers = $controllers;
     }
 
     public function addRoute(
@@ -83,7 +81,7 @@ class Router {
 
     public function handleRequest($server){
         $route = $this->findRoute($server);      
-        $controller = $this->getControllerInstace($route->controller);        
+	$controller = $this->createControllerInstance($route->controller);
         $controller->{$route->method}($_SERVER, $route);
     }
 
@@ -102,16 +100,11 @@ class Router {
         return reset($route);
     }
 
-    private function getControllerInstace(string $className){
-        $controller = array_filter($this->controllers, function($controller) use ($className){
-            return get_class($controller) == $className;
-        });
-
-        if(Empty($controller)) {
-            echo "404 controller";
-            die();
-        }
-
-        return reset($controller);
-    }
+	public function createControllerInstance($controllerName){
+		if(class_exists($controllerName)){
+			return new $controllerName();
+		} else {
+			die("404 not found, controler doesnt exists!");	
+		}
+	}	
 }
