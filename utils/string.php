@@ -7,7 +7,7 @@ function getStrAfterBackSlash(string $str){
 
 function addNumberRegex(string $input): string {
     $pattern = str_replace('/:num', '\/(\d+)', $input);
-    return '/^\/' . $pattern . '$/';
+    return '/^' . $pattern . '$/';
 }
 
 function makeRegexRoute(string $route) {
@@ -25,10 +25,9 @@ function match_(string $str, string $pattern) {
 
 function extractParam(string $str, string $pattern) {    
   	$matches = []; 
+	$pattern = $newPatt = str_replace("^", "^\/", $pattern);
 	if (preg_match($pattern, $str,$matches)) {
-	print_r($matches);	
-        	return $matches;
+        	return $matches[1];
     	}
-	return preg_match($pattern, $str, $matches);
-    return false;
+    	return false;
 }

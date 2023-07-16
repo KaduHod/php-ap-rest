@@ -15,9 +15,11 @@ class TaskController extends Controller {
     public function getById($server, $route) {
         $uri = $server['REQUEST_URI'];
         $pattern = $route->path;
-       
-	$result = \Utils\extractParam($uri, $pattern);
-	\Utils\dd(["rota" => $route,"url" =>  $uri,"result" => $result] );
+	$id = (int) \Utils\extractParam($uri, $pattern);       
+	$query = fetch("SELECT * FROM task WHERE id = '$id';");
+	header("Content-type","application/json");
+	http_response_code(200);
+	die(json_encode($query));	
     }
 
     public function index($server){

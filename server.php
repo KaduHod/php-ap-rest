@@ -6,9 +6,11 @@ require_once __DIR__."/config/config.php";
 //=============================================================
 
 
-$input = "/task/1";
-$pattern = "/^\/task\/(\d+)$/";
-$matches = array();
+//$input = "/task/1";
+//$pattern = "/^task\/(\d+)$/";
+//$newPatt = str_replace("^", "^\/", $pattern);
+//print_r([$pattern, $newPatt]);die;
+//$matches = array();
 
 //if (preg_match($pattern, $input, $matches)) {
 //    $number = $matches[1];
