@@ -10,7 +10,8 @@
     defined('CONTROLLERS_PATH') ? null : define("CONTROLLERS_PATH", APP_PATH.DS."controllers");
     defined('UTILS_PATH') ? null : define("UTILS_PATH", PROJECT_PATH.DS."utils");
     defined('DB_PATH') ? null : define("DB_PATH", APP_PATH.DS."database");
-    
+    defined("LOGGER_PATH") ? null : define("LOGGER_PATH", UTILS_PATH.DS."logger.php");    
+    defined("CONFIG_PATH") ? NULL : define("CONFIG_PATH", PROJECT_PATH.DS."config/config.php");
 
     require_once AUTOLOAD_PATH;
     require_once ROUTER_PATH;
